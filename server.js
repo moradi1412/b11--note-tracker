@@ -4,7 +4,7 @@ var fs = require("fs");
 var notesdb = require("./db/db.json")
 
 var app = express();
-var PORT = process.env.PORT || 3003;
+var PORT = process.env.PORT || 3001;
 
 
 app.use(express.urlencoded({ extended: true }));
@@ -52,6 +52,6 @@ function writeDb() {
 
 
 
-app.listen(3003, () => {
+app.listen(PORT, () => {
     console.log(`API server now on port 3003!`);
   });

@@ -4,7 +4,7 @@
 An application to write and save notes using express.js 
 
 ## screenshot 
-![screenshot](/Capture.jpg)
+![screenshot](/Capture.JPG)
 
 ## Develop and Refactor 
 Mohammad Javid Moradi 

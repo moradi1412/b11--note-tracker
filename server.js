@@ -24,12 +24,32 @@ app.post('/api/notes', (req, res) => {
     currentNote++; 
     console.log(nNotes); 
     notesdb.push(nNotes); 
+    writeDb(); 
   });
 
 
-//   app.get("*", function (req, res) {
-//     res.sendFile(path.join(__dirname, "public/index.html"));
-// });
+app.use(express.static("public"));
+
+// HTML Routes
+app.get("/notes", function (req, res) {
+    res.sendFile(path.join(__dirname, "public/notes.html"));
+});
+
+app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirname, "public/index.html"));
+});
+
+//function to write in db.json 
+function writeDb() {
+    fs.writeFile("db/db.json", JSON.stringify(notesdb), function (err) {
+        if (err) {
+            console.log("error")
+            return console.log(err);
+        }
+        console.log("Success!");
+    });
+}; 
+
 
 
 app.listen(3003, () => {

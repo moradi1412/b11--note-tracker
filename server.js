@@ -10,9 +10,20 @@ var PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+currentNote = notesdb.length; 
 
-  app.get('/', (req, res) => {
+// Routes
+app.get('/api/notes', (req, res) => {
     res.send(notesdb);
+  });
+
+
+app.post('/api/notes', (req, res) => {
+    var nNotes = req.body; 
+    nNotes['id'] = currentNote + 1; 
+    currentNote++; 
+    console.log(nNotes); 
+    notesdb.push(nNotes); 
   });
 
 
